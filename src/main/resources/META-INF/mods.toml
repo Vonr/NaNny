@@ -1,0 +1,27 @@
+modLoader="javafml"
+loaderVersion="[36,)"
+license="GPL-3.0"
+
+[[mods]]
+modId="nanny"
+version="${file.jarVersion}"
+displayName="NaNny"
+displayURL="https://github.com/Vonr/NaNny"
+authors="Qther"
+description='''
+Because some mods can't keep their floats in control.
+'''
+
+[[dependencies.nanny]]
+    modId="forge"
+    mandatory=true
+    versionRange="[36,)"
+    ordering="NONE"
+    side="SERVER"
+
+[[dependencies.nanny]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.16.5,1.17)"
+    ordering="NONE"
+    side="SERVER"
