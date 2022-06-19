@@ -108,7 +108,9 @@ public class NaNny {
     }
 
     private void rectify(LivingEntity le) {
-        le.setHealth(le.getMaxHealth() * Config.health.get().floatValue());
+        if (Config.doHeal.get()) {
+            le.setHealth(le.getMaxHealth() * Config.health.get().floatValue());
+        }
         le.setAbsorptionAmount(0);
     }
 
