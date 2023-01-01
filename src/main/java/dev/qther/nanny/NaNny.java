@@ -1,18 +1,18 @@
 package dev.qther.nanny;
 
-import net.minecraft.entity.LivingEntity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHealEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.server.ServerStartedEvent;
+import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.server.FMLServerStartedEvent;
-import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -26,12 +26,12 @@ public class NaNny {
     }
 
     @SubscribeEvent
-    public void onServerStarting(FMLServerStartingEvent e) {
+    public void onServerStarting(ServerStartingEvent e) {
         LOGGER.info("Scouting a NaNny...");
     }
 
     @SubscribeEvent
-    public void onServerStarted(FMLServerStartedEvent e) {
+    public void onServerStarted(ServerStartedEvent e) {
         LOGGER.info("NaNny hired!");
     }
 
