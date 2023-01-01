@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[36,)"
+loaderVersion="[43,)"
 license="GPL-3.0"
 
 [[mods]]
@@ -15,13 +15,13 @@ Because some mods can't keep their floats in control.
 [[dependencies.nanny]]
     modId="forge"
     mandatory=true
-    versionRange="[36,)"
+    versionRange="[43,)"
     ordering="NONE"
     side="SERVER"
 
 [[dependencies.nanny]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.16.5,1.17)"
+    versionRange="[1.18,1.19)"
     ordering="NONE"
     side="SERVER"

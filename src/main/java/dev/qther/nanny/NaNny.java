@@ -38,7 +38,7 @@ public class NaNny {
     @SubscribeEvent
     public void onLivingHurt(LivingHurtEvent e) {
         float dmg = e.getAmount();
-        LivingEntity le = e.getEntityLiving();
+        LivingEntity le = e.getEntity();
         if (Float.isNaN(dmg)) {
             e.setCanceled(true);
             rectify(le);
@@ -49,7 +49,7 @@ public class NaNny {
 
     @SubscribeEvent
     public void onLivingDamage(LivingDamageEvent e) {
-        LivingEntity le = e.getEntityLiving();
+        LivingEntity le = e.getEntity();
         float dmg = e.getAmount();
         if (Float.isNaN(dmg)) {
             e.setCanceled(true);
@@ -61,7 +61,7 @@ public class NaNny {
 
     @SubscribeEvent
     public void onAttackEntity(LivingAttackEvent e) {
-        LivingEntity le = e.getEntityLiving();
+        LivingEntity le = e.getEntity();
         float dmg = e.getAmount();
         if (Float.isNaN(dmg)) {
             e.setCanceled(true);
@@ -74,7 +74,7 @@ public class NaNny {
     @SubscribeEvent
     public void onLivingHeal(LivingHealEvent e) {
         float amount = e.getAmount();
-        LivingEntity le = e.getEntityLiving();
+        LivingEntity le = e.getEntity();
         if (Float.isNaN(amount)) {
             e.setCanceled(true);
             warn("A heal event tried to heal NaN health to " + getName(le) + "!");
@@ -91,7 +91,7 @@ public class NaNny {
 
     @SubscribeEvent
     public void onLivingDeath(LivingDeathEvent e) {
-        LivingEntity le = e.getEntityLiving();
+        LivingEntity le = e.getEntity();
         float hp = le.getHealth();
         if (Float.isNaN(hp)) {
             e.setCanceled(true);
