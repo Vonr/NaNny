@@ -22,6 +22,6 @@ Because some mods can't keep their floats in control.
 [[dependencies.nanny]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.18,1.19)"
+    versionRange="[1.20.1, 1.20.2)"
     ordering="NONE"
     side="SERVER"
