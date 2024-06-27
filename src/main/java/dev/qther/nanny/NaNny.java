@@ -1,28 +1,25 @@
 package dev.qther.nanny;
 
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.living.LivingAttackEvent;
-import net.minecraftforge.event.entity.living.LivingDamageEvent;
-import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import net.minecraftforge.event.entity.living.LivingHealEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.event.server.ServerStartedEvent;
-import net.minecraftforge.event.server.ServerStartingEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.entity.living.*;
+import net.neoforged.neoforge.event.server.ServerStartedEvent;
+import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-@Mod("nanny")
+@Mod(NaNny.MODID)
 public class NaNny {
-    private static final Logger LOGGER = LogManager.getLogger();
+    public static final String MODID = "nanny";
+    private static final Logger LOGGER = LoggerFactory.getLogger(MODID);
 
-    public NaNny() {
-        MinecraftForge.EVENT_BUS.register(this);
-        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Config.SPEC, "nanny-server.toml");
+    public NaNny(ModContainer container) {
+        NeoForge.EVENT_BUS.register(this);
+        container.registerConfig(ModConfig.Type.SERVER, Config.SPEC, "nanny-server.toml");
     }
 
     @SubscribeEvent
@@ -43,7 +40,6 @@ public class NaNny {
             e.setCanceled(true);
             rectify(le);
             warn("A hurt event tried to deal NaN damage to " + getName(le) + "! Source: " + e.getSource());
-            return;
         }
     }
 
@@ -55,7 +51,6 @@ public class NaNny {
             e.setCanceled(true);
             rectify(le);
             warn("A damage event tried to deal NaN damage to " + getName(le) + "! Source: " + e.getSource());
-            return;
         }
     }
 
@@ -67,7 +62,6 @@ public class NaNny {
             e.setCanceled(true);
             rectify(le);
             warn("A attack event tried to deal NaN damage to " + getName(le) + "! Source: " + e.getSource());
-            return;
         }
     }
 
@@ -85,7 +79,6 @@ public class NaNny {
             e.setCanceled(true);
             rectify(le);
             warn("A heal event set " + le.getName().getString() + "'s health to NaN!");
-            return;
         }
     }
 
@@ -97,7 +90,6 @@ public class NaNny {
             e.setCanceled(true);
             rectify(le);
             warn("A death event set " + getName(le) + "'s health to NaN! Source: " + e.getSource());
-            return;
         }
     }
 
