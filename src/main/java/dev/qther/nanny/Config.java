@@ -17,7 +17,7 @@ public class Config {
             .define("doHeal", true);
 
         health = BUILDER
-            .comment("Percentage of max health to set the entity to when NaN dealt or healed to them (Default 1.0)")
+            .comment("Percentage (0.0 to 1.0) of max health to set the entity to when NaN dealt or healed to them (Default 1.0)")
             .defineInRange("health", 1.0, 0.0, 1.0);
 
         log = BUILDER

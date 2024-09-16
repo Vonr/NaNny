@@ -33,35 +33,33 @@ public class NaNny {
     }
 
     @SubscribeEvent
-    public void onLivingHurt(LivingHurtEvent e) {
+    public void onLivingIncomingDamage(LivingIncomingDamageEvent e) {
         float dmg = e.getAmount();
         LivingEntity le = e.getEntity();
         if (Float.isNaN(dmg)) {
             e.setCanceled(true);
             rectify(le);
-            warn("A hurt event tried to deal NaN damage to " + getName(le) + "! Source: " + e.getSource());
+            warn("An incoming damage event tried to deal NaN damage to " + getName(le) + "! Source: " + e.getSource());
         }
     }
 
     @SubscribeEvent
-    public void onLivingDamage(LivingDamageEvent e) {
+    public void onLivingDamagePre(LivingDamageEvent.Pre e) {
+        float dmg = e.getNewDamage();
         LivingEntity le = e.getEntity();
-        float dmg = e.getAmount();
         if (Float.isNaN(dmg)) {
-            e.setCanceled(true);
-            rectify(le);
+            e.setNewDamage(0);
             warn("A damage event tried to deal NaN damage to " + getName(le) + "! Source: " + e.getSource());
         }
     }
 
     @SubscribeEvent
-    public void onAttackEntity(LivingAttackEvent e) {
+    public void onLivingDamagePost(LivingDamageEvent.Post e) {
+        float dmg = e.getNewDamage();
         LivingEntity le = e.getEntity();
-        float dmg = e.getAmount();
         if (Float.isNaN(dmg)) {
-            e.setCanceled(true);
             rectify(le);
-            warn("A attack event tried to deal NaN damage to " + getName(le) + "! Source: " + e.getSource());
+            warn("A damage event tried to deal NaN damage to " + getName(le) + "! Source: " + e.getSource());
         }
     }
 
