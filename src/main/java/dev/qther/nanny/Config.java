@@ -9,6 +9,7 @@ public class Config {
     public static final ModConfigSpec.BooleanValue doHeal;
     public static final ModConfigSpec.DoubleValue health;
     public static final ModConfigSpec.BooleanValue log;
+    public static final ModConfigSpec.BooleanValue stacktrace;
 
     static {
         BUILDER.push("Server Config for NaNny");
@@ -21,8 +22,12 @@ public class Config {
             .defineInRange("health", 1.0, 0.0, 1.0);
 
         log = BUILDER
-            .comment("Whether or not to log events that set entitys' health to NaN (Default true)")
+            .comment("Whether or not to log events that set entities' health to NaN (Default true)")
             .define("log", true);
+
+        stacktrace = BUILDER
+                .comment("Whether or not to print a stacktrace when entities' health are set to NaN (Default false)")
+                .define("stacktrace", false);
 
         BUILDER.pop();
         SPEC = BUILDER.build();

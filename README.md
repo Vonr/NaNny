@@ -2,7 +2,7 @@
 
 ## Because some mods can't keep their floats in control.
 
-NaNny is a Minecraft 1.16.5 Forge mod that cleans up after mods that set entitys' health and/or absorption to NaN.
+NaNny is a Minecraft 26.1 NeoForge mod that cleans up after mods that set entitys' health and/or absorption to NaN.
 
 This is accomplished by hooking into the following events and cancelling and optionally healing the affected entities:
 
